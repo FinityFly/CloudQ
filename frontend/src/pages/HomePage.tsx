@@ -2,7 +2,10 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import Layout from '@/Layout'
-import { Calendar, Search, Merge, Wrench } from "lucide-react"
+import { Calendar, Wrench } from "lucide-react"
+
+import LoginButton from '@/components/LoginButton'
+import LogoutButon from '@/components/LogoutButton'
 import { TypeAnimation } from 'react-type-animation';
 
 const sideBarItems = [
@@ -30,8 +33,12 @@ const titleSequence = [
     2000,  
 ]
 const HomePage = () => {
+
     return (
         <Layout items={sideBarItems}>
+
+            <LoginButton/>
+            <LogoutButon/>
           <div className="flex justify-center pt-20 w-full h-full">
             <div className="flex gap-5 text-4xl flex-col items-center w-full max-w-screen-lg px-6">
     
