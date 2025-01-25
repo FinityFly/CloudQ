@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '@/Layout'
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
+import { JoinEvent } from '@/components/JoinEvent'
 const sideBarItems = [
   {
     title: "Home",
@@ -17,7 +17,7 @@ const sideBarItems = [
 const JoinEventLine = () => {
   return (
     <Layout items={sideBarItems}>
-        <h1>join event</h1>
+        <JoinEvent/>
     </Layout>
   )
 }
