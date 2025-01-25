@@ -19,12 +19,14 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+import { Textarea } from "./ui/textarea"
+
 export function CreateEvent() {
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardTitle>Create new event</CardTitle>
+        <CardDescription>Deploy your new event in one-click.</CardDescription>
       </CardHeader>
       <CardContent>
         <form>
@@ -33,26 +35,17 @@ export function CreateEvent() {
               <Label htmlFor="name">Name</Label>
               <Input id="name" placeholder="Name of your event" />
             </div>
+
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Description</Label>
-              <Input id="name" placeholder="Name of your event" />
+              <Label htmlFor="description">Description</Label>
+              <Textarea id="description" placeholder="Description of your event" className="h-32"/>
             </div>    
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="framework">Framework</Label>
-              <Select>
-                <SelectTrigger id="framework">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                </SelectContent>
-              </Select>
+              <Label htmlFor="location">Location</Label>
+              <Input id="location" placeholder="Location of your event" />
             </div>
-          </div>
-        </form>
+          </div>    
+        </form> 
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
