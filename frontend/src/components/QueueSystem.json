@@ -1,0 +1,64 @@
+{
+  "abi": [
+    {
+      "inputs": [],
+      "name": "joinQueue",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "leaveQueue",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getQueue",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "queueLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getUserAtIndex",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506101ec806100206000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c80639bfc84f61461005c5780633ccfd60b1461007b5780638da5cb5b14610090578063c80e3d92146100af575b600080fd5b6100646100cb565b6040516100719190610145565b60405180910390f35b6100886100d1565b6040516100959190610145565b60405180910390f35b6100986100da565b6040516100a5919061016c565b60405180910390f35b6100b76100df565b6040516100c4919061016c565b60405180910390f35b606060405190810160405280600081525060608160a0565b80516101256000806100ff565b50919050565b60006020828403121561013b57600080fd5b813567ffffffffffffffff81111561015557600080fd5b818401915084601f83011261016857600080fd5b81358181111561017a57600080fd5b87602086019061018a565b915050925092509256fea26469706673582212206bfcdbfa16437845622b8814d9c3185db5b579f56971df5dc5a42afc8656e54b64736f6c63430008130033"
+}
