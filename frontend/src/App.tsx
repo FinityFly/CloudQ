@@ -8,16 +8,24 @@ import {
 } from "react-router-dom";
 import { WagmiProvider } from "wagmi";
 import { config } from "./config";
-import QueueApp from "./components/QueueApp";
-
+import HomePage from "./pages/HomePage";
+import Layout from "./Layout";
+import CreateEventPage from "./pages/CreateEventPage";
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<QueueApp />}></Route>)
+  createRoutesFromElements(
+    <Route path="/">
+      <Route index element={<HomePage/>}/>
+      <Route path="create-event" element = {<CreateEventPage/>}/>
+    </Route>
+    )
 );
 
 function App() {
   return (
     <WagmiProvider config={config}>
+      <Layout>
       <RouterProvider router={router} />
+      </Layout>
     </WagmiProvider>
   );
 }
