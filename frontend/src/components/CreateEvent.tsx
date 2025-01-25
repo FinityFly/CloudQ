@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select"
 
 import { Textarea } from "./ui/textarea"
+import { Link } from "react-router-dom"
 
 export function CreateEvent() {
   return (
@@ -48,7 +49,9 @@ export function CreateEvent() {
         </form> 
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
+        <Link to="/">
+          <Button variant="outline">Cancel</Button>
+        </Link>
         <Button>Deploy</Button>
       </CardFooter>
     </Card>

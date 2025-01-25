@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, LucideIcon, Search, Settings } from "lucide-react"
 
 import {
   Sidebar,
@@ -12,35 +12,17 @@ import {
 } from "@/components/ui/sidebar"
 
 // Menu items.
-const items = [
-  {
-    title: "Event Name",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-]
+interface ItemSchema{
+  title: string;
+  url: string;
+  icon: LucideIcon;
+}
 
-export function AppSidebar() {
+interface MyComponentProps {
+  items: ItemSchema[];
+}
+
+const AppSidebar : React.FC<MyComponentProps> = ( {items} ) => {
   return (
     <Sidebar>
       <SidebarContent>
@@ -65,3 +47,5 @@ export function AppSidebar() {
     </Sidebar>
   )
 }
+
+export default AppSidebar

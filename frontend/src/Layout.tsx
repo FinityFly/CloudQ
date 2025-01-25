@@ -1,10 +1,18 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/AppSidebar"
+import AppSidebar from "@/components/AppSidebar"
 import { Button } from "./components/ui/button"
-export default function Layout({ children }: { children: React.ReactNode }) {
+import { LucideIcon } from "lucide-react"
+
+interface ItemSchema{
+  title: string;
+  url: string;
+  icon: LucideIcon;
+}
+
+export default function Layout({ children, items }: { children: React.ReactNode, items: ItemSchema[] }) {
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar items={items}/>
 
       <main>
         <SidebarTrigger />

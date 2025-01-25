@@ -25,9 +25,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <WagmiProvider config={config}>
-      <Layout>
+      
       <RouterProvider router={router} />
-      </Layout>
+      
     </WagmiProvider>
   );
 }
