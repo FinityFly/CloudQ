@@ -14,10 +14,7 @@ export default function Layout({ children, items }: { children: React.ReactNode,
     <SidebarProvider>
       <AppSidebar items={items}/>
 
-      <main>
-        <SidebarTrigger />
- 
-        
+      <main className="w-full">
         {children}
       </main>
     </SidebarProvider>

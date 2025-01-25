@@ -1,0 +1,6 @@
+body {
+    background-color: #f9f9f9; /* Base background color */
+    background-image: radial-gradient(circle, #b7b7b7 1px, transparent 1px);
+    background-size: 40px 40px; /* Size of each grid cell */
+  }
+  
