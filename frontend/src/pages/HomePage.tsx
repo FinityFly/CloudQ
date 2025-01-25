@@ -1,5 +1,4 @@
 import React from 'react'
-import TableDemo from '@/components/Table'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import Layout from '@/Layout'
@@ -13,13 +12,8 @@ const sideBarItems = [
   },
   {
     title: "Manage your event",
-    url: "/mamage-event",
+    url: "/manage/0",
     icon: Wrench
-  },
-  {
-    title: "Join Event Line",
-    url: "/join-event-line",
-    icon: Merge,
   }
 ]
 const HomePage = () => {
@@ -28,9 +22,6 @@ const HomePage = () => {
           <div className="flex justify-center pl-40 py-8">
             {/* Container to center content and add space */}
             <div className="flex flex-col items-center w-full max-w-screen-lg px-6">
-              <div className="w-full flex-grow">
-                <TableDemo />
-              </div>
               <Link to="create-event">
                 <Button>Create Event</Button>
               </Link>

@@ -11,15 +11,15 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useLocation } from 'react-router-dom'
 
-
-import { Textarea } from "./ui/textarea"
 
 export function JoinEvent() {
+  const location = useLocation()
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Join event</CardTitle>
+        <CardTitle>Join event {location.pathname.slice(6)}</CardTitle>
         <CardDescription>Enter your phone number and we'll message you when its you're turn!</CardDescription>
       </CardHeader>
       <CardContent>

@@ -9,15 +9,17 @@ import {
 import { WagmiProvider } from "wagmi";
 import { config } from "./config";
 import HomePage from "./pages/HomePage";
-import Layout from "./Layout";
 import CreateEventPage from "./pages/CreateEventPage";
 import JoinEventLine from "./pages/JoinEventLine";
+import ManageEventPage from "./pages/ManageEventPage";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route index element={<HomePage/>}/>
       <Route path="create-event" element = {<CreateEventPage/>}/>
-      <Route path="join-event-line" element = {<JoinEventLine/>}/>
+      <Route path="join/:id" element = {<JoinEventLine/>}/>
+      <Route path="manage/:id" element = {<ManageEventPage/>}/>
     </Route>
     )
 );
@@ -25,9 +27,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <WagmiProvider config={config}>
-      
       <RouterProvider router={router} />
-      
     </WagmiProvider>
   );
 }
