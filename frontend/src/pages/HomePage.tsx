@@ -25,7 +25,6 @@ const sideBarItems = [
 const HomePage = () => {
   return (
     <Layout items={sideBarItems}>
-      <div>SHDLKFJSLKDF</div>
       <TableDemo/>
       <Link to={"create-event"}>
         <Button>create event</Button>

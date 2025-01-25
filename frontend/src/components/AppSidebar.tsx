@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, LucideIcon, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, LucideIcon, Search, Settings, CloudUploadIcon } from "lucide-react"
 
 import {
   Sidebar,
@@ -26,8 +26,14 @@ const AppSidebar : React.FC<MyComponentProps> = ( {items} ) => {
   return (
     <Sidebar>
       <SidebarContent>
+      <div className="flex items-center gap-2 p-4">
+        <CloudUploadIcon />
+
+          <span className="text-lg font-semibold">CloudQ</span>
+        </div>
+        <hr className="my-2" />
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
