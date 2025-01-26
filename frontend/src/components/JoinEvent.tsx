@@ -12,15 +12,24 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useLocation } from 'react-router-dom'
-
-
+import { events } from "@/lib/data"
+import { useState } from "react"
 export function JoinEvent() {
   const location = useLocation()
+    
+  const initialData = events.find(item => item.id === location.pathname.slice(6));
+  console.log(location.pathname.slice(6))
+  const [data, setData] = useState(initialData?.attendees)
   return (
     <Card className="w-[350px]">
       <CardHeader>
         <CardTitle>Join event {location.pathname.slice(6)}</CardTitle>
-        <CardDescription>Enter your phone number and we'll message you when its you're turn!</CardDescription>
+        <CardDescription>
+          <div>Enter your phone number and we'll message you when its you're turn!</div>
+
+          <div className="font-semibold text-neutral-700 pt-5"># Attendees: {data ? data.length : 0}</div>
+          <div className="font-semibold text-neutral-700 pt-5">EST Wait: {data ? data.length*5 : 0} mins</div>
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form>
@@ -43,9 +52,8 @@ export function JoinEvent() {
           </div>    
         </form> 
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+      <CardFooter className="flex justify-center"> 
+        <Button>Join Queue!</Button>
       </CardFooter>
     </Card>
   )

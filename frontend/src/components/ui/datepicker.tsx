@@ -3,6 +3,7 @@
 import * as React from "react"
 import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
+import { useEffect } from "react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -13,8 +14,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DatePicker() {
+export function DatePicker({updateDate} : {updateDate: (date: Date) => void}) {
   const [date, setDate] = React.useState<Date>()
+  useEffect(() => {
+    // Callback function to run when 'date' changes
+    const callback = () => {
+        updateDate(date ? date : new Date());
+    };
+
+    // Call the callback whenever 'date' changes
+    callback();
+  }, [date]); // Dependency array: runs the effect when 'date' changes
 
   return (
     <Popover>
