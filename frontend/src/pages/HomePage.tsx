@@ -5,6 +5,7 @@ import Layout from '@/Layout'
 import { Calendar, Wrench } from "lucide-react"
 import { LoopDots } from '@/components/LoopDots'
 import { TypeAnimation } from 'react-type-animation';
+import QRCode from '@/components/QRCode'
 import EventsCreatedChart from '@/components/EventChart'
 const sideBarItems = [
   {
@@ -34,6 +35,7 @@ const HomePage = () => {
 
     return (
         <Layout items={sideBarItems}>
+            <QRCode/>
           <div className="flex justify-center pt-20 w-full h-full">
             <div className="flex gap-5 text-4xl flex-col w-full max-w-screen-lg px-6">
               <div className='flex'>
