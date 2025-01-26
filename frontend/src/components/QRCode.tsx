@@ -10,7 +10,7 @@ import {
 import { QRCodeSVG } from 'qrcode.react'
 import { QrCodeIcon } from 'lucide-react'
 
-const QRCode = () => {
+const QRCode = ({value} : {value:string}) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -31,7 +31,7 @@ const QRCode = () => {
         <div className="grid gap-8 text-center">
           <div className="space-y-6">
             {/* Make the QR Code larger by setting the size */}
-            <QRCodeSVG value="https://reactjs.org/" size={256} />
+            <QRCodeSVG value={value} size={256} />
             <h4 className="font-medium leading-none text-lg mt-8">Scan to Join</h4> {/* Added margin-top for more space above the text */}
           </div>
         </div>

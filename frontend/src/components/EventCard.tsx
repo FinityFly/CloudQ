@@ -14,12 +14,13 @@ interface EventCardProps {
 
 export function EventCard({ name, description, attendees, date, location, id}: EventCardProps) {
   return (
-    <Link to={`/manage/${id}`} key={id}  className="w-full max-w-3xl">
+    <div className="w-full max-w-3xl">
     <Card>
       <CardHeader>
         <CardTitle className="text-2xl">{name}</CardTitle>
       </CardHeader>
       <CardContent className="">
+        <Link to={`/manage/${id}`} key={id}>
         <p className="text-muted-foreground">{description}</p>
         <div className="flex pt-5 gap-12">
             <div className="flex items-center gap-2">
@@ -35,6 +36,7 @@ export function EventCard({ name, description, attendees, date, location, id}: E
             <span>{location}</span>
             </div>
         </div>
+        </Link>
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="destructive" className="">
@@ -46,11 +48,11 @@ export function EventCard({ name, description, attendees, date, location, id}: E
             
         </Button>
 
-        <QRCode/>
+        <QRCode value={`https://cloudq.netlify.app/join/${id}`}/>
 
       </CardFooter>
     </Card>
-    </Link>
+    </div>
   )
 }
 
