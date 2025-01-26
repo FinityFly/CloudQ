@@ -1,51 +1,64 @@
 import React from 'react'
-import { useState } from 'react'
 import TableDemo from '@/components/Table'
-import { Input } from '@/components/ui/input'
 import { useLocation, Link } from 'react-router-dom'
+import { Calendar, Home } from 'lucide-react'
+import { useState } from "react"
+import { EventCard } from '@/components/EventCard'
+import { events } from "../lib/data"
 import { Button } from '@/components/ui/button'
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-  } from "@/components/ui/select"
+import Layout from '@/Layout'
 const ManageEventPage = () => {
     const location = useLocation();
-    const [searchBy, setSearchBy] = useState("Event ID");
-    const [search, setSearch] = useState("");
+    const [searchType, setSearchType] = useState("id")
+    const [searchQuery, setSearchQuery] = useState("")
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        console.log(`Searching by ${searchType}: ${searchQuery}`)
+        // Implement your search logic here
+    }
+
+    const handleCancel = () => {
+        setSearchQuery("")
+        setSearchType("id")
+    }
+    const sideBarItems = [
+        {
+          title: "Home",
+          url: "/",
+          icon: Home,
+        },
+        {
+          title: "Create an event",
+          url: "/create-event",
+          icon: Calendar
+        }
+      ]
   return (
-    <div className='w-[40vw]'>
+    <Layout items={sideBarItems}>
+    <div className='w-full'>
         {
             location.pathname === "/manage/0" ?
-            <>
-            <h2>Search by:</h2>
-            <Select onValueChange={(value) => setSearchBy(value)}>
-                <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select an option" />
-                </SelectTrigger>
-                <SelectContent>
-                <SelectGroup>
-                    <SelectLabel>Search By:</SelectLabel>
-                    <SelectItem value="eventID">Event ID</SelectItem>
-                    <SelectItem value="eventName">Event Name</SelectItem>
-                </SelectGroup>
-                </SelectContent>
-            </Select>
-            <Input onChange={(value) => setSearch(value.target.value)} placeholder={`enter ${searchBy} here`}/>
-            <Link to={`/manage/${search}`}>
-            <Button> GO!</Button>
-            </Link>
-            </>
+                <div className='flex flex-col items-center w-full gap-10 pt-24'>
+                    {
+                        events.map((event, index) => (
+                            
+                            <EventCard id={event.id} name = {event.name} description={event.description} attendees={event.attendees.length} date={event.date} location={event.location}/>
+                            
+                        ))
+                    }
+                </div>
+
             :
+            <div className='flex flex-col gap-20 justify-center w-full items-center h-screen'>
             <TableDemo/>
+            <Button>Send Push Notification</Button>
+            </div>
  
         }
         
     </div>
+    </Layout>
   )
 }
 

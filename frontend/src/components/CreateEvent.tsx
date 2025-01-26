@@ -22,7 +22,7 @@ export function CreateEvent() {
       <div className="flex items-center text-4xl font-semibold gap-2 mb-5">
         <CloudUploadIcon size={100} stroke="black" strokeWidth="1px"/><span>Cloud</span><span className="text-blue-600 -ml-1">Q</span>
       </div>
-    <Card className="w-[800px] ">
+    <Card className="w-[800px] bg-slate-100 ">
       <CardHeader>
         <CardTitle className=" bg-gradient-to-l from-blue-500 to-blue-600 text-transparent bg-clip-text">Create new event</CardTitle>
         <CardDescription>Deploy your new event in one-click.</CardDescription>
