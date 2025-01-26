@@ -1,22 +1,26 @@
 import { CalendarIcon, MapPinIcon, QrCodeIcon, UsersIcon, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-
+import { Link } from "react-router-dom"
+import QRCode from "./QRCode"
 interface EventCardProps {
   name: string
   description: string
   attendees: number;
   date: string
   location: string
+  id:string
 }
 
-export function EventCard({ name, description, attendees, date, location}: EventCardProps) {
+export function EventCard({ name, description, attendees, date, location, id}: EventCardProps) {
   return (
-    <Card className="w-full max-w-3xl">
+    <div className="w-full max-w-3xl">
+    <Card>
       <CardHeader>
         <CardTitle className="text-2xl">{name}</CardTitle>
       </CardHeader>
       <CardContent className="">
+        <Link to={`/manage/${id}`} key={id}>
         <p className="text-muted-foreground">{description}</p>
         <div className="flex pt-5 gap-12">
             <div className="flex items-center gap-2">
@@ -32,6 +36,7 @@ export function EventCard({ name, description, attendees, date, location}: Event
             <span>{location}</span>
             </div>
         </div>
+        </Link>
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="destructive" className="">
@@ -42,16 +47,12 @@ export function EventCard({ name, description, attendees, date, location}: Event
             </>
             
         </Button>
-        <Button variant="outline" className="">
-         
-            <>
-              <QrCodeIcon className="mr-2 h-4 w-4" />
-              Show QR Code
-            </>
-            
-        </Button>
+
+        <QRCode value={`https://cloudq.netlify.app/join/${id}`}/>
+
       </CardFooter>
     </Card>
+    </div>
   )
 }
 
