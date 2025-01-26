@@ -4,7 +4,7 @@ trait ICloudQ<TContractState> {
     fn getFrontOfQueue(self: @TContractState) -> starknet::ContractAddress;
     fn getPosition(self: @TContractState, person_id: u32) -> u32;
     fn getLength(self: @TContractState) -> u32;
-    fn addPerson(ref self: TContractState, contract_address: starknet::ContractAddress);
+    fn addPerson(ref self: TContractState, contract_address: starknet::ContractAddress, name: felt252, phone_number: u32, time_joined: u32);
     fn removePerson(ref self: TContractState, person_id: u32);
 }
 
@@ -12,6 +12,9 @@ trait ICloudQ<TContractState> {
 struct PersonInfo {
     person_id: u32,
     contract_address: starknet::ContractAddress,
+    name: felt252,
+    phone_number: u32,
+    time_joined: u32,
 }
 
 #[starknet::contract]
@@ -20,7 +23,7 @@ mod CloudQ {
         StoragePointerReadAccess, StoragePointerWriteAccess,
         Vec, VecTrait, MutableVecTrait, Map, StoragePathEntry,
     };
-    use core::starknet::{ContractAddress, get_caller_address};
+    use core::starknet::{ContractAddress};
     use core::array::ArrayTrait;
     use super::PersonInfo;
 
@@ -50,6 +53,9 @@ mod CloudQ {
                 let person_info = self.queue.entry(i).read();
                 queueExport.append(person_info.person_id.into());
                 queueExport.append(person_info.contract_address.into());
+                queueExport.append(person_info.name.into()); // might not need into
+                queueExport.append(person_info.phone_number.into());
+                queueExport.append(person_info.time_joined.into());
                 i += 1;
             };
             
@@ -74,11 +80,14 @@ mod CloudQ {
             self.queue_size.read()
         }
 
-        fn addPerson(ref self: ContractState, contract_address: ContractAddress) {
+        fn addPerson(ref self: ContractState, contract_address: ContractAddress, name: felt252, phone_number: u32, time_joined: u32) {
             let person_id = self.queue_size.read() + 1;
             let person = PersonInfo {
                 person_id,
                 contract_address,
+                name,
+                phone_number,
+                time_joined,
             };
 
             self.queue.entry(person_id).write(person);
