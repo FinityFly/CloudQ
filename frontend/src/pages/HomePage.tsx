@@ -29,7 +29,7 @@ const titleSequence = [
   2000,
   'A Product Launch',
   2000,
-  'Or Any Event',
+  'Any Event at All',
     2000,  
 ]
 const HomePage = () => {
