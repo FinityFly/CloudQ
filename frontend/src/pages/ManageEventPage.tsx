@@ -12,6 +12,46 @@ const ManageEventPage = () => {
     const [searchType, setSearchType] = useState("id")
     const [searchQuery, setSearchQuery] = useState("")
 
+    const event_name = "McHacks 12"
+    const event_location = "Leacock RM-XXX"
+        const phone = '+16138099825';
+        //const [phone, setPhone] = useState('');
+        const [message, setMessage] = useState(`
+            🎉 Congratulations! 🎉 You're next in line for *${event_name}*! 🚶‍♂️🚶‍♀️ Head to *${event_location}* now and be ready—your turn is coming up! ⏳🔜
+            💬 Stay tuned for further updates! 📱
+          `);
+          
+        const sendSMS = async () => {
+          if (!phone) {
+            alert('Please enter a phone number');
+            return;
+          }
+      
+          try {
+
+            const response = await fetch(`${window.location.origin}/.netlify/functions/sendSMS`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  phone,
+                  message,
+                }),
+              });
+
+            const data = await response.json();
+      
+            if (data.success) {
+              alert('SMS sent successfully!');
+            } else {
+              alert('Error: ' + data.error);
+            }
+          } catch (error) {
+            console.error('Error sending SMS:', error);
+            alert('Failed to send SMS');
+          }
+        };    
+
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         console.log(`Searching by ${searchType}: ${searchQuery}`)
@@ -52,7 +92,7 @@ const ManageEventPage = () => {
             :
             <div className='flex flex-col gap-20 justify-center w-full items-center h-screen'>
             <TableDemo/>
-            <Button>Send Push Notification</Button>
+            <Button onClick={sendSMS}>Send Push Notification</Button>
             </div>
  
         }
