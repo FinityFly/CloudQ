@@ -1,20 +1,30 @@
 import React from 'react'
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { QRCodeSVG } from 'qrcode.react'
+import { QrCodeIcon } from 'lucide-react'
 
 const QRCode = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Open popover</Button>
+
+      <Button variant="outline" className="">
+         
+         <>
+           <QrCodeIcon className="mr-2 h-4 w-4" />
+           Show QR Code
+         </>
+         
+     </Button>
+
+        
       </PopoverTrigger>
 
       <PopoverContent className="w-80 flex justify-center items-center p-8 border rounded-lg">

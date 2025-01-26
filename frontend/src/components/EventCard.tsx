@@ -1,7 +1,7 @@
 import { CalendarIcon, MapPinIcon, QrCodeIcon, UsersIcon, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-
+import QRCode from "./QRCode"
 interface EventCardProps {
   name: string
   description: string
@@ -42,14 +42,9 @@ export function EventCard({ name, description, attendees, date, location}: Event
             </>
             
         </Button>
-        <Button variant="outline" className="">
-         
-            <>
-              <QrCodeIcon className="mr-2 h-4 w-4" />
-              Show QR Code
-            </>
-            
-        </Button>
+
+        <QRCode/>
+
       </CardFooter>
     </Card>
   )
