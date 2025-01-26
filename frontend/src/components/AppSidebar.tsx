@@ -13,6 +13,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import LoginButton from "./LoginButton";
 
 // Menu items.
 interface ItemSchema {
@@ -95,7 +96,11 @@ const AppSidebar: React.FC<MyComponentProps> = ({ items }) => {
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarFooter>
-      ) : null}
+      ) :
+      <div className="w-full flex justify-center py-2">
+      <LoginButton/>
+      </div>
+      }
     </Sidebar>
   );
 };
