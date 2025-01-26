@@ -12,7 +12,7 @@ import HomePage from "./pages/HomePage";
 import CreateEventPage from "./pages/CreateEventPage";
 import JoinEventLine from "./pages/JoinEventLine";
 import ManageEventPage from "./pages/ManageEventPage";
-
+import ProfilePage from "./pages/ProfilePage";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
@@ -20,6 +20,8 @@ const router = createBrowserRouter(
       <Route path="create-event" element = {<CreateEventPage/>}/>
       <Route path="join/:id" element = {<JoinEventLine/>}/>
       <Route path="manage/:id" element = {<ManageEventPage/>}/>
+      <Route path="profile" element = {<ProfilePage/>}/>
+
     </Route>
     )
 );

@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import Layout from '@/Layout'
 import { Calendar, Wrench } from "lucide-react"
-
+import Profile from '@/components/Profile'
 import LoginButton from '@/components/LoginButton'
 import LogoutButon from '@/components/LogoutButton'
 import { TypeAnimation } from 'react-type-animation';
@@ -36,7 +36,6 @@ const HomePage = () => {
 
     return (
         <Layout items={sideBarItems}>
-
             <LoginButton/>
             <LogoutButon/>
           <div className="flex justify-center pt-20 w-full h-full">
