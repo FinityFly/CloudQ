@@ -1,7 +1,7 @@
 export const events = 
     [
         {
-            id: 1,
+            id: "1",
             name: 'Event 1',
             date: '2021-10-01',
             location: 'Location 1',
@@ -22,7 +22,7 @@ export const events =
             ]
         },
         {
-            id: 2,
+            id: "2",
             name: 'Event 2',
             date: '2024-12-01',
             location: 'Location 2',

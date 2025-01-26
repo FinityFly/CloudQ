@@ -1,6 +1,7 @@
 import { CalendarIcon, MapPinIcon, QrCodeIcon, UsersIcon, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Link } from "react-router-dom"
 import QRCode from "./QRCode"
 interface EventCardProps {
   name: string
@@ -8,11 +9,13 @@ interface EventCardProps {
   attendees: number;
   date: string
   location: string
+  id:string
 }
 
-export function EventCard({ name, description, attendees, date, location}: EventCardProps) {
+export function EventCard({ name, description, attendees, date, location, id}: EventCardProps) {
   return (
-    <Card className="w-full max-w-3xl">
+    <Link to={`/manage/${id}`} key={id}  className="w-full max-w-3xl">
+    <Card>
       <CardHeader>
         <CardTitle className="text-2xl">{name}</CardTitle>
       </CardHeader>
@@ -47,6 +50,7 @@ export function EventCard({ name, description, attendees, date, location}: Event
 
       </CardFooter>
     </Card>
+    </Link>
   )
 }
 

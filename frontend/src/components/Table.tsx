@@ -9,35 +9,20 @@ import {
     TableRow,
   } from "@/components/ui/table"
   import { useState } from "react"
+  import { events } from "@/lib/data"
+  import { useLocation } from "react-router-dom"
+
   
-  const initialData = [
-    {
-      name: "John Doe",
-      timeJoined: "2023-01-01",
-      phoneNumber: "+1 234 567 890",
-    },
-    {
-      name: "Jane Smith",
-      timeJoined: "2023-02-15",
-      phoneNumber: "+1 987 654 321",
-    },
-    {
-      name: "Alice Johnson",
-      timeJoined: "2023-03-22",
-      phoneNumber: "+1 555 123 456",
-    },
-    {
-      name: "Bob Brown",
-      timeJoined: "2023-04-10",
-      phoneNumber: "+1 333 777 888",
-    },
-  ]
   
   const TableDemo = () => {
-    const [data, setData] = useState(initialData)
+    const location = useLocation();
+  
+    const initialData = events.find(item => item.id === location.pathname.slice(8));
+    console.log(location.pathname.slice(8))
+    const [data, setData] = useState(initialData?.attendees)
   
     const handleDelete = (index: number) => {
-      const updatedData = data.filter((_, i) => i !== index)
+      const updatedData = data ? data.filter((_, i) => i !== index) : []
       setData(updatedData)
     }
   
@@ -53,11 +38,11 @@ import {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((user, index) => (
+          {data && data.map((user, index) => (
             <TableRow key={index}>
               <TableCell className="font-medium">{user.name}</TableCell>
-              <TableCell>{user.timeJoined}</TableCell>
-              <TableCell>{user.phoneNumber}</TableCell>
+              <TableCell>1/26/2025</TableCell>
+              <TableCell>{user.phone}</TableCell>
               <TableCell className="text-right">
                 <button
                   className="text-red-500"
@@ -72,7 +57,7 @@ import {
         <TableFooter>
           <TableRow>
             <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">{data.length} Users</TableCell>
+            <TableCell className="text-right">{data ? data.length :0} Users</TableCell>
           </TableRow>
         </TableFooter>
       </Table>

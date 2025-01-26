@@ -5,6 +5,7 @@ import { Calendar, Home } from 'lucide-react'
 import { useState } from "react"
 import { EventCard } from '@/components/EventCard'
 import { events } from "../lib/data"
+import { Button } from '@/components/ui/button'
 import Layout from '@/Layout'
 const ManageEventPage = () => {
     const location = useLocation();
@@ -41,13 +42,18 @@ const ManageEventPage = () => {
                 <div className='flex flex-col items-center w-full gap-10 pt-24'>
                     {
                         events.map((event, index) => (
-                            <EventCard name = {event.name} description={event.description} attendees={event.attendees.length} date={event.date} location={event.location}/>
+                            
+                            <EventCard id={event.id} name = {event.name} description={event.description} attendees={event.attendees.length} date={event.date} location={event.location}/>
+                            
                         ))
                     }
                 </div>
 
             :
+            <div className='flex flex-col gap-20 justify-center w-full items-center h-screen'>
             <TableDemo/>
+            <Button>Send Push Notification</Button>
+            </div>
  
         }
         
